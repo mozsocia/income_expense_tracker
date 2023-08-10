@@ -32,7 +32,14 @@
                 <tbody>
                   @if ($transactions->isEmpty())
                     <tr>
-                      <td colspan="5">No transactions available. Please create income and expense data.</td>
+                      <td colspan="5">No transactions available. Please create income and expense data.
+                        <br>
+                        <a href="{{ route('expenses.create') }}" class="btn btn-sm btn-outline-primary mt-2 me-3">Add Expense</a>
+
+                        <a href="{{ route('incomes.create') }}" class="btn btn-sm btn-outline-primary mt-2">Add Incomes</a>
+
+                      </td>
+
                     </tr>
                   @else
                     @foreach ($transactions as $transaction)

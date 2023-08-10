@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Expense;
 use App\Models\Income;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -25,8 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $incomes = Income::orderBy('created_at', 'asc')->get();
-        $expenses = Expense::orderBy('created_at', 'asc')->get();
+        $incomes = Income::where('user_id', Auth::id())->orderBy('created_at', 'asc')->get();
+        $expenses = Expense::where('user_id', Auth::id())->orderBy('created_at', 'asc')->get();
     
         $transactions = collect($incomes)->map(function ($item) {
             $item['type'] = 'Income';
