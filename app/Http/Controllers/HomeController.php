@@ -37,11 +37,14 @@ class HomeController extends Controller
             return $item;
         }))->sortBy('created_at');
 
+        $totalIncome = $incomes->sum('amount');
+        $totalExpense = $expenses->sum('amount');
+
         $totalAmount = $transactions->sum(function ($transaction) {
             return $transaction->type === 'Income' ? $transaction->amount : -$transaction->amount;
         });
     
     
-        return view('home', compact('transactions', 'totalAmount'));
+        return view('home', compact('transactions', 'totalIncome', 'totalExpense', 'totalAmount'));
     }
 }

@@ -19,7 +19,7 @@
             <div class="container">
               <h1>Income and Expenses</h1>
 
-              <table class="table table-bordered data-table" >
+              <table class="table table-bordered data-table">
                 <thead>
                   <tr>
                     <th>Date</th>
@@ -34,9 +34,11 @@
                     <tr>
                       <td colspan="5">No transactions available. Please create income and expense data.
                         <br>
-                        <a href="{{ route('expenses.create') }}" class="btn btn-sm btn-outline-primary mt-2 me-3">Add Expense</a>
+                        <a href="{{ route('expenses.create') }}" class="btn btn-sm btn-outline-primary mt-2 me-3">Add
+                          Expense</a>
 
-                        <a href="{{ route('incomes.create') }}" class="btn btn-sm btn-outline-primary mt-2">Add Incomes</a>
+                        <a href="{{ route('incomes.create') }}" class="btn btn-sm btn-outline-primary mt-2">Add
+                          Incomes</a>
 
                       </td>
 
@@ -58,12 +60,16 @@
                       </tr>
                     @endforeach
                   @endif
-                  <tr>
-                    <td colspan="4"><strong>Total Amount:</strong></td>
-                    <td><strong>{{ $totalAmount }}</strong></td>
-                  </tr>
+
                 </tbody>
               </table>
+
+              <div class="mt-4">
+                <h4>Total Amount: {{ $totalAmount }}</h4>
+                <h5>Total Income: {{ $totalIncome }}</h5>
+                <h5>Total Expense: {{ $totalExpense }}</h5>
+                
+            </div>
 
             </div>
 

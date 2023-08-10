@@ -2,16 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Income;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class IncomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $incomes = Income::where('user_id', Auth::id())->get();
-        return view('incomes.index', compact('incomes'));
+        $user = auth()->user();
+        $incomes = $user->incomes();
+
+        if ($request->has('category_filter')) {
+            $categoryFilter = $request->input('category_filter');
+            if ($categoryFilter) {
+                $incomes->where('category', $categoryFilter);
+            }
+        }
+
+        if ($request->has('start_date') && $request->has('end_date')) {
+            $startDate = $request->input('start_date');
+            $endDate = $request->input('end_date');
+            if ($startDate && $endDate) {
+                $incomes->whereBetween('date', [$startDate, $endDate]);
+            }
+        }
+
+        $incomes = $incomes->get();
+        $categories = $user->incomes()->pluck('category')->unique();
+
+        return view('incomes.index', compact('incomes', 'categories'));
+
     }
 
     public function create()
