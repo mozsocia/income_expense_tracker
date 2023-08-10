@@ -28,8 +28,7 @@ class IncomeController extends Controller
             'category' => 'required|string',
         ]);
 
-        $data['user_id'] = Auth::id();
-        Income::create($data);
+        auth()->user()->incomes()->create($data);
 
         return redirect()->route('incomes.index')->with('success', 'Income created successfully.');
     }

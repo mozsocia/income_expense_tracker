@@ -37,6 +37,21 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Left Side Of Navbar -->
+
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="{{ route('home') }}">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="{{ route('incomes.index') }}">Incomes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="{{ route('expenses.index') }}">Expenses</a>
+            </li>
+
+          </ul>
+
           <ul class="navbar-nav me-auto">
 
           </ul>
@@ -82,6 +97,16 @@
     </nav>
 
     <main class="py-4">
+      <div class="container">
+        @if (session('success'))
+          <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
+
+        @if (session('error'))
+          <div class="alert alert-danger">{{ session('error') }}</div>
+        @endif
+      </div>
+
       @yield('content')
     </main>
   </div>
