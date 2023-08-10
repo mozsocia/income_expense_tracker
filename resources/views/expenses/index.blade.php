@@ -4,7 +4,7 @@
   <div class="container">
     <h1>Expense List</h1>
     <a href="{{ route('expenses.create') }}" class="btn btn-primary mb-3">Add Expense</a>
-    <table class="table">
+    <table class="table data-table">
       <thead>
         <tr>
           <th>Amount</th>

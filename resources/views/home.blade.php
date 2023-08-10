@@ -19,7 +19,7 @@
             <div class="container">
               <h1>Income and Expenses</h1>
 
-              <table class="table table-bordered">
+              <table class="table table-bordered data-table" >
                 <thead>
                   <tr>
                     <th>Date</th>

@@ -7,7 +7,7 @@
     <h1>Your Incomes</h1>
     <a href="{{ route('incomes.create') }}" class="btn btn-primary mb-3">Add Incomes</a>
 
-    <table class="table">
+    <table class="table data-table">
       <thead>
         <tr>
           <th>Date</th>
@@ -43,5 +43,8 @@
         @endif
       </tbody>
     </table>
+
   </div>
+
+
 @endsection
